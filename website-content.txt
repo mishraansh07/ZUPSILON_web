@@ -1,0 +1,83 @@
+========================================
+ZUPSILON - MINIMAL LANDING PAGE COPY
+========================================
+
+=== NAV BAR / HEADER ===
+ZUPSILON | EST. 2024
+Join Early Access
+SYSTEM ACTIVE
+
+=== HERO SECTION ===
+Intelligence that understands connections, not just data.
+Zupsilon is a research-driven AI company building Graph Neural Network systems to model real-world, high-dimensional relationships.
+
+[ Buttons ]
+Explore Platform
+Join Early Access
+
+=== TICKER BAR ===
+Systems Online
+BUILT BY AI RESEARCHERS // GRAPH INTELLIGENCE // REAL-TIME NETWORK SYNTHESIS //
+
+=== SECTION 1: WHAT IS ZUPSILON? ===
+Intelligence Mapped.
+Zupsilon is a research-first AI company focused on building systems that understand relationships — not just isolated data points.
+
+[ Pillars ]
+- चैतन्य (Awareness-Driven): Understanding context beyond single data nodes. Perceiving the entire network as a living structure.
+- विचार (Deep Reasoning): Analyzing multi-hop structural dependencies to synthesize conclusions invisible to tabular AI.
+- युक्ति (Intelligent Execution): Applying graph intelligence to architect solutions and influence system-wide decisions.
+
+=== SECTION 2: GRAPH ENGINE ===
+Graph Engine
+Discover the hidden architecture of complex systems.
+Our systems analyze networks — people, data, systems — uncovering deep dimensional patterns that traditional machine learning models dismiss as noise.
+
+[ Features ]
+- Relationship Layer: Maps dimensional edge-networks instantly.
+- Pattern Discovery: Identifies cyclical clusters and structural anomalies.
+- Semantic Traversal: Navigates multi-hop pathways with natural reasoning.
+
+=== SECTION 3: HOW IT WORKS ===
+The Logic of Connection.
+Transforming unstructured noise into deliberate, navigable intelligence.
+
+[ Steps ]
+- 01 Input Data Intakes: Ingesting heterogeneous, unstructured streams from completely disjointed sources.
+- 02 Relationship Mapping: Constructing multi-dimensional edge networks to highlight latent connections.
+- 03 Insight Generation: Propagating embeddings to predict, classify, and generate structural insights.
+
+=== SECTION 4: USE CASES ===
+Real-World Relevance
+- Financial Networks (Fraud & Flow)
+- Research Modeling (Knowledge Synthesis)
+- Recommendation Systems (Hyper-Personalization)
+- Social Graphs (Community Detection)
+
+=== SECTION 5: PHILOSOPHY ===
+Philosophy
+"We act with AWARENESS. We think with PURPOSE. We prevail through STRATEGY."
+
+=== SECTION 6: CTA / ABOUT ===
+Intelligence. Evolved.
+Founded by builders passionate about AI and systems architecture. Be part of the next generation of graph-native applications.
+
+[ Button ]
+Join Early Access
+
+=== FOOTER ===
+ZUPSILON
+Building Graph Neural Network systems to model real-world relationships.
+
+Company: 
+- Platform
+- Research
+- Philosophy
+
+Connect: 
+- About Us
+- Contact
+- Twitter
+
+© 2024 ZUPSILON. ALL RIGHTS RESERVED.
+PRIVACY | TERMS
