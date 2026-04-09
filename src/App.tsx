@@ -7,6 +7,7 @@ import { Preloader } from '@/components/ui/preloader';
 import { MagneticButton } from '@/components/ui/magnetic-button';
 import { LegalModal } from '@/components/ui/legal-modal';
 import { WaitlistModal } from '@/components/ui/waitlist-modal';
+import { ContactModal } from '@/components/ui/contact-modal';
 import { WaitlistCountDisplay } from '@/components/ui/waitlist-count-display';
 
 const smoothFade: any = {
@@ -25,12 +26,14 @@ const staggerContainer: any = {
 export default function App() {
   const [legalContent, setLegalContent] = useState<'privacy' | 'terms' | null>(null);
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
     <div className="w-full min-h-screen bg-[#fdf9fa] text-[#1a1a1a] selection:bg-[#60507c] selection:text-white font-sans overflow-x-hidden">
       <Preloader />
       <LegalModal content={legalContent} onClose={() => setLegalContent(null)} />
       <WaitlistModal isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
+      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
       
       {/* 1. HERO SECTION (Dark theme) */}
       <section className="relative w-full h-screen border-b-2 border-black/10">
@@ -61,8 +64,8 @@ export default function App() {
         </motion.div>
       </section>
 
-      {/* 3. WHAT IS ZUPSILON? */}
-      <section className="py-24 px-6 lg:px-20 max-w-7xl mx-auto relative shader-bg-light overflow-hidden">
+      {/* 3. WHAT IS ZUPSILON? (RESEARCH) */}
+      <section id="research" className="py-24 px-6 lg:px-20 max-w-7xl mx-auto relative shader-bg-light overflow-hidden">
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -99,8 +102,8 @@ export default function App() {
         </motion.div>
       </section>
 
-      {/* 4. WHAT YOU BUILD (PRODUCT SECTION) - SHADER BACKGROUND EXPOSED */}
-      <section className="py-32 px-6 lg:px-20 bg-[#fdf9fa] mt-16 relative overflow-hidden">
+      {/* 4. WHAT YOU BUILD (PLATFORM) */}
+      <section id="platform" className="py-32 px-6 lg:px-20 bg-[#fdf9fa] mt-16 relative overflow-hidden">
         <div className="absolute inset-0 shader-mesh-gradient opacity-80 pointer-events-none"></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div 
@@ -142,8 +145,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* 5. HOW IT WORKS */}
-      <section id="how-it-works" className="py-32 px-6 lg:px-20 max-w-7xl mx-auto relative overflow-hidden shader-bg-light">
+      {/* 5. HOW IT WORKS (PHILOSOPHY) */}
+      <section id="philosophy" className="py-32 px-6 lg:px-20 max-w-7xl mx-auto relative overflow-hidden shader-bg-light">
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -269,15 +272,15 @@ export default function App() {
             <div className="flex gap-16 text-sm">
               <div className="flex flex-col gap-4">
                 <span className="text-white font-bold mb-2 tracking-wider text-xs uppercase bg-[#60507c] px-2 py-1 w-fit">Company</span>
-                <a href="#" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Platform</a>
-                <a href="#" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Research</a>
-                <a href="#" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Philosophy</a>
+                <a href="#platform" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Platform</a>
+                <a href="#research" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Research</a>
+                <a href="#philosophy" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Philosophy</a>
               </div>
               <div className="flex flex-col gap-4">
                 <span className="text-white font-bold mb-2 tracking-wider text-xs uppercase bg-[#60507c] px-2 py-1 w-fit">Connect</span>
-                <a href="#" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">About Us</a>
-                <a href="#" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Contact</a>
-                <a href="#" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Twitter</a>
+                <a href="#research" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">About Us</a>
+                <button onClick={() => setIsContactOpen(true)} className="text-left hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Contact</button>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Instagram</a>
               </div>
             </div>
           </div>

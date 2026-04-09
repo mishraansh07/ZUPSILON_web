@@ -27,7 +27,7 @@ export function WaitlistModal({ isOpen, onClose }: { isOpen: boolean, onClose: (
     setErrorMessage('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/waitlist', {
+      const response = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email }),
@@ -40,6 +40,7 @@ export function WaitlistModal({ isOpen, onClose }: { isOpen: boolean, onClose: (
       }
 
       setStatus('success');
+      window.dispatchEvent(new CustomEvent('waitlistUpdated'));
     } catch (err: any) {
       setErrorMessage(err.message || 'FAILED TO CONNECT');
       setStatus('error');

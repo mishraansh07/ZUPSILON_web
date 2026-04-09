@@ -3,11 +3,17 @@ import React, { useState, useEffect } from 'react';
 export const WaitlistCountDisplay = ({ isModal = false }: { isModal?: boolean }) => {
   const [count, setCount] = useState<number>('...' as any);
   
-  useEffect(() => {
-    fetch('http://localhost:5000/api/waitlist/count')
+  const fetchCount = () => {
+    fetch(`/api/count?t=${Date.now()}`)
       .then(res => res.json())
       .then(data => setCount(data.count))
       .catch(err => console.error(err));
+  };
+  
+  useEffect(() => {
+    fetchCount();
+    window.addEventListener('waitlistUpdated', fetchCount);
+    return () => window.removeEventListener('waitlistUpdated', fetchCount);
   }, []);
 
   const MAX_SPOTS = 50;
