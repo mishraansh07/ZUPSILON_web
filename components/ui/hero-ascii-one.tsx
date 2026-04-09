@@ -6,12 +6,17 @@ import { MagneticButton } from './magnetic-button';
 export default function AnimationPage({ onOpenWaitlist }: { onOpenWaitlist?: () => void }) {
   const [waitlistCount, setWaitlistCount] = useState<number | string>('...');
 
-  useEffect(() => {
-    fetch('http://localhost:5000/api/waitlist/count')
+  const fetchCount = () => {
+    fetch(`/api/count?t=${Date.now()}`)
       .then(res => res.json())
       .then(data => setWaitlistCount(data.count))
       .catch(err => console.error("Error fetching waitlist count", err));
+  };
 
+  useEffect(() => {
+    fetchCount();
+    window.addEventListener('waitlistUpdated', fetchCount);
+    
     const embedScript = document.createElement('script');
     embedScript.type = 'text/javascript';
     embedScript.textContent = `
@@ -70,6 +75,7 @@ export default function AnimationPage({ onOpenWaitlist }: { onOpenWaitlist?: () 
     setTimeout(hideBranding, 500); setTimeout(hideBranding, 1000); setTimeout(hideBranding, 2000); setTimeout(hideBranding, 5000); setTimeout(hideBranding, 10000);
 
     return () => {
+      window.removeEventListener('waitlistUpdated', fetchCount);
       clearInterval(interval);
       document.head.removeChild(embedScript);
       document.head.removeChild(style);
