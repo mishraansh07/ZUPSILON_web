@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { MagneticButton } from './magnetic-button';
+import { Navbar } from './navbar';
 
 export default function AnimationPage() {
 
@@ -79,52 +80,8 @@ export default function AnimationPage() {
 
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#0a0a0a]/20 via-[#0a0a0a]/60 to-[#0a0a0a]/90 pointer-events-none"></div>
 
-      {/* Brutalist Sticky Header */}
-      <nav className="fixed top-0 left-0 right-0 z-[100] bg-white border-b-4 border-black">
-        <div className="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-          {/* Brand */}
-          <div className="flex items-center gap-4">
-            <img src="/logo.png" alt="Logo" className="h-6 lg:h-8 w-auto grayscale brightness-0" />
-            <span className="text-black text-xl font-black tracking-widest uppercase">Zupsilon</span>
-          </div>
-
-          {/* Center Navigation */}
-          <div className="hidden lg:flex items-center h-full">
-            {[
-              { name: 'Charter', id: 'charter' },
-              { name: 'Laboratory', id: 'about' },
-              { name: 'Benchmarks', id: 'benchmarks' },
-              { name: 'Archive', id: 'lab' },
-            ].map((link) => (
-              <button
-                key={link.id}
-                onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
-                className="h-full px-8 text-xs font-black uppercase tracking-[0.25em] text-black hover:bg-black hover:text-white transition-all duration-200 border-l-2 border-black last:border-r-2"
-              >
-                {link.name}
-              </button>
-            ))}
-          </div>
-
-          {/* Status Indicator */}
-          <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-3 px-4 py-2 border-2 border-black bg-[#60507c] text-white">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
-              </span>
-              <span className="text-[10px] font-black uppercase tracking-widest">v1.0 ONLINE</span>
-            </div>
-            
-            {/* Mobile Menu Icon (Placeholder) */}
-            <div className="lg:hidden w-8 h-8 flex flex-col justify-center gap-1.5">
-              <div className="w-full h-1 bg-black"></div>
-              <div className="w-full h-1 bg-black"></div>
-              <div className="w-full h-1 bg-black"></div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      {/* New Responsive Navbar */}
+      <Navbar />
 
       <div className="absolute top-24 left-6 lg:left-12 w-12 h-12 border-t-4 border-l-4 border-white/20 z-20 hidden lg:block"></div>
       <div className="absolute top-24 right-6 lg:right-12 w-12 h-12 border-t-4 border-r-4 border-white/20 z-20 hidden lg:block"></div>
@@ -134,24 +91,22 @@ export default function AnimationPage() {
         <div className="w-full lg:w-3/4 px-6 lg:px-16 lg:ml-8 mt-12 lg:mt-0">
           <div className="max-w-3xl relative">
             
-
-
             <div className="relative mb-8">
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tighter uppercase text-white drop-shadow-2xl shader-text-gradient">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] sm:leading-[1.05] tracking-tighter uppercase text-white drop-shadow-2xl shader-text-gradient">
                 Structural Reasoning. <br className="hidden lg:block" />
                 <span className="text-white/40 font-bold">Language Intelligence.</span>
               </h1>
             </div>
 
-            <p className="text-lg lg:text-2xl text-white mb-10 leading-relaxed font-medium max-w-2xl text-balance bg-black/40 backdrop-blur-md p-4 border-l-4 border-[#b19cd9]">
+            <p className="text-base sm:text-lg lg:text-2xl text-white mb-10 leading-relaxed font-medium max-w-2xl text-balance bg-black/40 backdrop-blur-md p-6 border-l-4 border-[#b19cd9]">
               Zupsilon builds Neural Systems that synthesize Graph Topologies with Language Model reasoning — modeling how data connect and communicate.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 items-center">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center">
               <MagneticButton>
                 <button 
                   onClick={() => { document.getElementById('lab')?.scrollIntoView({ behavior: 'smooth' }); }}
-                  className="relative px-8 py-4 bg-white/10 text-white font-bold rounded-none group border-4 border-white backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-black shadow-[8px_8px_0_0_rgba(255,255,255,0.4)] hover:shadow-none uppercase tracking-widest text-sm"
+                  className="w-full sm:w-auto relative px-8 py-4 bg-white/10 text-white font-bold rounded-none group border-4 border-white backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-black shadow-[8px_8px_0_0_rgba(255,255,255,0.4)] hover:shadow-none uppercase tracking-widest text-sm"
                 >
                   Explore Benchmarks
                 </button>
@@ -162,7 +117,7 @@ export default function AnimationPage() {
                   href="/ETA-A_Benchmark_v1.0.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-4 bg-transparent text-white/80 font-bold tracking-widest uppercase text-sm border-2 border-white/20 hover:bg-white/5 hover:text-white transition-all duration-300 hover:border-white text-center"
+                  className="w-full sm:w-auto px-8 py-4 bg-transparent text-white/80 font-bold tracking-widest uppercase text-sm border-2 border-white/20 hover:bg-white/5 hover:text-white transition-all duration-300 hover:border-white text-center"
                 >
                   Read Lab Report
                 </a>

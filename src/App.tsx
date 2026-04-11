@@ -41,16 +41,15 @@ export default function App() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={smoothFade}
-          className="flex flex-col md:flex-row items-baseline justify-between border-b-2 border-[#1a1a1a] pb-12"
+          className="flex flex-col sm:flex-row items-center sm:items-baseline justify-between border-b-2 border-[#1a1a1a] pb-8 sm:pb-12"
         >
-          <div className="text-xs font-bold tracking-[0.2em] text-[#60507c] uppercase mb-6 md:mb-0 flex-shrink-0">
+          <div className="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-[#60507c] uppercase mb-4 sm:mb-0 flex-shrink-0 border-2 border-[#60507c] px-2 py-1 sm:border-0 sm:p-0">
             Systems Online
           </div>
-          <div className="overflow-hidden w-full md:ml-12 relative flex">
-            <div className="absolute left-0 w-16 h-full bg-gradient-to-r from-white to-transparent z-10"></div>
-            <div className="absolute right-0 w-16 h-full bg-gradient-to-l from-white to-transparent z-10"></div>
-            <div className="animate-marquee gap-8 md:text-3xl text-xl tracking-[0.05em] uppercase whitespace-nowrap text-transparent [-webkit-text-stroke:1px_#1a1a1a] font-black hover:text-[#1a1a1a] hover:[-webkit-text-stroke:0px] transition-colors duration-300 cursor-default">
-              <span>GRAPH-NATIVE AI // RELATIONSHIP INTELLIGENCE // MULTI-HOP REASONING // BEYOND TABULAR ML //</span>
+          <div className="overflow-hidden w-full sm:ml-8 md:ml-12 relative flex">
+            <div className="absolute left-0 w-8 sm:w-16 h-full bg-gradient-to-r from-[#fdf9fa] to-transparent z-10"></div>
+            <div className="absolute right-0 w-8 sm:w-16 h-full bg-gradient-to-l from-[#fdf9fa] to-transparent z-10"></div>
+            <div className="animate-marquee flex gap-8 md:text-3xl text-xl tracking-[0.05em] uppercase whitespace-nowrap text-transparent [-webkit-text-stroke:1px_#1a1a1a] font-black hover:text-[#1a1a1a] hover:[-webkit-text-stroke:0px] transition-colors duration-300 cursor-default">
               <span>GRAPH-NATIVE AI // RELATIONSHIP INTELLIGENCE // MULTI-HOP REASONING // BEYOND TABULAR ML //</span>
               <span>GRAPH-NATIVE AI // RELATIONSHIP INTELLIGENCE // MULTI-HOP REASONING // BEYOND TABULAR ML //</span>
             </div>
@@ -130,7 +129,7 @@ export default function App() {
                 &quot;To find the structure is to find the soul. Data without topology is noise; topology without reasoning is blind.&quot;
               </p>
               <div className="mt-8 flex flex-col gap-4 text-[10px] font-black tracking-[0.2em] uppercase text-[#1a1a1a]/40">
-                <span>01 // STRUCTURAL SYSTHESIS</span>
+                <span>01 // STRUCTURAL SYNTHESIS</span>
                 <span>02 // NYAYA CATEGORIZATION</span>
                 <span>03 // HETU (EVIDENCE) VERIFICATION</span>
               </div>
