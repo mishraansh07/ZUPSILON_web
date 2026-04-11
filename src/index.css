@@ -38,6 +38,29 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
+/* ── Permanently suppress UnicornStudio watermark ── */
+a[href*="unicorn"],
+a[href*="unicornstudio"],
+iframe[src*="unicorn"],
+div[style*="z-index: 99999"],
+div[style*="z-index:99999"],
+[data-us-project] > a,
+[data-us-project] a[href],
+.unicorn-watermark,
+.us-watermark {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+
 .font-sanskrit {
   font-family: 'Noto Serif Devanagari', serif;
 }
