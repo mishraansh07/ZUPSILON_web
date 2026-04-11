@@ -486,7 +486,7 @@ export default function App() {
             </div>
           </motion.div>
 
-          {/* ── RESEARCH INDEX (UPGRADED) ── */}
+          {/* ── RESEARCH ARCHIVE (Pivoted to Internal Logs) ── */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -494,32 +494,37 @@ export default function App() {
             variants={staggerContainer}
             className="mb-20"
           >
-            <div className="flex items-center gap-3 mb-10">
-              <BookOpen className="w-5 h-5 text-[#60507c]" />
-              <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-[#1a1a1a]">Published Index</h3>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+              <div className="flex items-center gap-3">
+                <BookOpen className="w-5 h-5 text-[#60507c]" />
+                <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-[#1a1a1a]">Technical Archive</h3>
+              </div>
+              <p className="text-[10px] font-bold text-gray-400 max-w-sm uppercase leading-relaxed tracking-wider">
+                Note: Our laboratory prioritizes empirical stability. Internal logs and system cards are released as performance baselines are established.
+              </p>
             </div>
 
             <div className="border-t-2 border-[#1a1a1a]">
               {[
                 {
-                  id: "RP-26-001",
-                  tag: "WORKING PAPER",
+                  id: "LOG-26-001",
+                  tag: "TECHNICAL LOG",
                   title: "Graph-Native Reasoning at Scale: Beyond Message Passing",
                   abstract: "Internal draft detailing a new class of inference engines for multi-hop structural traversal.",
                   category: "Structural Inference",
                   year: "2026",
                 },
                 {
-                  id: "RP-26-002",
-                  tag: "WORKING PAPER",
+                  id: "LOG-26-002",
+                  tag: "TECHNICAL LOG",
                   title: "Relationship Intelligence: Combining GNN Topologies with Language Models",
                   abstract: "Systematic study on using edge semantics as high-dimensional priors for linguistic reasoning.",
                   category: "Hybrid AI",
                   year: "2026",
                 },
                 {
-                  id: "RP-26-003",
-                  tag: "IN DEVELOPMENT",
+                  id: "LOG-26-003",
+                  tag: "CONCEPT DRAFT",
                   title: "Nyaya-GNN: Classical Indian Logic as a Neural Framework",
                   abstract: "Researching the application of early logical categorization systems to structural graph optimization.",
                   category: "Neural Logic",
@@ -553,7 +558,7 @@ export default function App() {
                       {paper.category}
                     </span>
                     <div className="flex items-center gap-2 text-xs font-bold text-[#60507c] uppercase tracking-wider mt-auto group-hover:translate-x-2 transition-transform duration-300">
-                      Internal Log <ArrowUpRight className="w-3.5 h-3.5" />
+                      View Log <ArrowUpRight className="w-3.5 h-3.5" />
                     </div>
                   </div>
                 </motion.div>
