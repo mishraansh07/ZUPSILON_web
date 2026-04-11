@@ -57,17 +57,17 @@ export const Navbar = () => {
           style={{ scaleX }}
         />
 
-        <div className="container mx-auto px-6 lg:px-12 h-full flex items-center justify-between">
+        <div className="container mx-auto px-8 lg:px-12 h-full flex items-center justify-between">
           {/* Brand */}
           <div 
-            className="flex items-center gap-4 cursor-pointer group" 
+            className="flex items-center gap-3 sm:gap-4 cursor-pointer group" 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <div className="relative">
-              <img src="/logo.png" alt="Logo" className="h-6 lg:h-8 w-auto grayscale brightness-0 group-hover:grayscale-0 transition-all duration-500" />
+              <img src="/logo.png" alt="Logo" className="h-5 lg:h-8 w-auto grayscale brightness-0 group-hover:grayscale-0 transition-all duration-500" />
               <div className="absolute -inset-2 border border-[#60507c]/0 group-hover:border-[#60507c]/50 transition-all duration-500 scale-110 opacity-0 group-hover:opacity-100"></div>
             </div>
-            <span className="text-black text-xl font-black tracking-widest uppercase">Zupsilon</span>
+            <span className="text-black text-lg lg:text-xl font-black tracking-widest uppercase">Zupsilon</span>
           </div>
 
           {/* Desktop Navigation */}

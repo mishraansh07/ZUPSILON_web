@@ -101,13 +101,13 @@ export default function AnimationPage() {
             className="max-w-3xl relative"
           >
             <div className="relative mb-8">
-              <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black leading-[1.0] tracking-tighter uppercase text-white drop-shadow-2xl shader-text-gradient">
+              <h1 className="text-3xl sm:text-6xl lg:text-8xl font-black leading-[1.0] tracking-tighter uppercase text-white drop-shadow-2xl shader-text-gradient">
                 Structural Reasoning. <br className="hidden lg:block" />
                 <span className="text-white/40 font-bold">Language Intelligence.</span>
               </h1>
             </div>
 
-            <p className="text-base sm:text-lg lg:text-2xl text-white mb-10 leading-relaxed font-medium max-w-2xl text-balance bg-black/40 backdrop-blur-md p-6 border-l-4 border-[#b19cd9]">
+            <p className="text-sm sm:text-lg lg:text-2xl text-white mb-10 leading-relaxed font-medium max-w-2xl text-balance bg-black/40 backdrop-blur-md p-6 border-l-4 border-[#b19cd9]">
               Zupsilon builds Neural Systems that synthesize Graph Topologies with Language Model reasoning — modeling how data connect and communicate.
             </p>
 
@@ -115,7 +115,7 @@ export default function AnimationPage() {
               <MagneticButton>
                 <button 
                   onClick={() => { document.getElementById('lab')?.scrollIntoView({ behavior: 'smooth' }); }}
-                  className="w-full sm:w-auto relative px-8 py-4 bg-white/10 text-white font-bold rounded-none group border-4 border-white backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-black shadow-[8px_8px_0_0_rgba(255,255,255,0.4)] hover:shadow-none uppercase tracking-widest text-[10px] sm:text-xs"
+                  className="w-full sm:w-auto relative px-8 py-4 bg-white/10 text-white font-bold rounded-none group border-4 border-white backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-black shadow-[4px_4px_0_0_rgba(255,255,255,0.4)] hover:shadow-none uppercase tracking-widest text-[10px] sm:text-xs"
                 >
                   Explore Benchmarks
                 </button>

@@ -41,15 +41,15 @@ export default function App() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={smoothFade}
-          className="flex flex-col sm:flex-row items-center sm:items-baseline justify-between border-b-2 border-[#1a1a1a] pb-8 sm:pb-12"
+          className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b-2 border-[#1a1a1a] pb-10 sm:pb-12 gap-8"
         >
-          <div className="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-[#60507c] uppercase mb-4 sm:mb-0 flex-shrink-0 border-2 border-[#60507c] px-2 py-1 sm:border-0 sm:p-0">
+          <div className="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-[#60507c] uppercase flex-shrink-0 border-2 border-[#60507c] px-3 py-1.5 sm:border-0 sm:p-0 bg-[#60507c]/5 sm:bg-transparent">
             Systems Online
           </div>
-          <div className="overflow-hidden w-full sm:ml-8 md:ml-12 relative flex">
-            <div className="absolute left-0 w-8 sm:w-16 h-full bg-gradient-to-r from-[#fdf9fa] to-transparent z-10"></div>
-            <div className="absolute right-0 w-8 sm:w-16 h-full bg-gradient-to-l from-[#fdf9fa] to-transparent z-10"></div>
-            <div className="animate-marquee flex gap-8 md:text-3xl text-xl tracking-[0.05em] uppercase whitespace-nowrap text-transparent [-webkit-text-stroke:1px_#1a1a1a] font-black hover:text-[#1a1a1a] hover:[-webkit-text-stroke:0px] transition-colors duration-300 cursor-default">
+          <div className="overflow-hidden w-full relative h-12 flex items-center">
+            <div className="absolute left-0 w-12 sm:w-20 h-full bg-gradient-to-r from-[#fdf9fa] to-transparent z-10"></div>
+            <div className="absolute right-0 w-12 sm:w-20 h-full bg-gradient-to-l from-[#fdf9fa] to-transparent z-10"></div>
+            <div className="animate-marquee flex gap-12 md:text-3xl text-xl tracking-[0.05em] uppercase whitespace-nowrap text-transparent [-webkit-text-stroke:1px_#1a1a1a] font-black hover:text-[#1a1a1a] hover:[-webkit-text-stroke:0px] transition-colors duration-300 cursor-default">
               <span>GRAPH-NATIVE AI // RELATIONSHIP INTELLIGENCE // MULTI-HOP REASONING // BEYOND TABULAR ML //</span>
               <span>GRAPH-NATIVE AI // RELATIONSHIP INTELLIGENCE // MULTI-HOP REASONING // BEYOND TABULAR ML //</span>
             </div>
@@ -147,9 +147,9 @@ export default function App() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-5 relative"
+              className="lg:col-span-5 relative px-4 sm:px-0"
             >
-              <div className="relative z-10 border-8 border-black grayscale hover:grayscale-0 transition-all duration-700 shadow-[20px_20px_0_0_#60507c]">
+              <div className="relative z-10 border-4 sm:border-8 border-black grayscale hover:grayscale-0 transition-all duration-700 shadow-[10px_10px_0_0_#60507c] sm:shadow-[20px_20px_0_0_#60507c]">
                 <img 
                   src="/founder.jpg" 
                   alt="Ansh Mishra - Founder" 
@@ -159,7 +159,7 @@ export default function App() {
                   }}
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#eee5e8] -z-10"></div>
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#eee5e8] -z-10 sm:w-32 sm:h-32 sm:-bottom-6 sm:-right-6"></div>
             </motion.div>
 
             {/* Content */}
@@ -183,10 +183,10 @@ export default function App() {
                 <p>
                   We are building a new class of intelligence that synthesizes the structural rigor of Graph Neural Networks with the semantic breadth of Large Language Models. Our goal is to create systems that don't just predict the next token, but understand the underlying manifold of relationships.
                 </p>
-                <div className="pt-8 flex flex-wrap gap-4">
-                  <div className="px-4 py-2 border-2 border-black text-xs font-bold uppercase tracking-widest">GNN Topologies</div>
-                  <div className="px-4 py-2 border-2 border-black text-xs font-bold uppercase tracking-widest">Language Models</div>
-                  <div className="px-4 py-2 border-2 border-black text-xs font-bold uppercase tracking-widest">Neural Geometry</div>
+                <div className="pt-8 flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
+                  <div className="px-4 py-2 border-2 border-black text-[10px] font-bold uppercase tracking-widest bg-white">GNN Topologies</div>
+                  <div className="px-4 py-2 border-2 border-black text-[10px] font-bold uppercase tracking-widest bg-white">Language Models</div>
+                  <div className="px-4 py-2 border-2 border-black text-[10px] font-bold uppercase tracking-widest bg-white">Neural Geometry</div>
                 </div>
 
                 <div className="mt-12 p-6 border-l-4 border-dashed border-[#b19cd9] bg-[#fdf9fa]">
@@ -201,7 +201,7 @@ export default function App() {
       </section>
 
       {/* 4. WHAT YOU BUILD (PLATFORM) */}
-      <section id="platform" className="py-32 px-6 lg:px-20 bg-[#fdf9fa] mt-16 relative overflow-hidden">
+      <section id="platform" className="py-24 lg:py-32 px-6 lg:px-20 bg-[#fdf9fa] mt-16 relative overflow-hidden">
         <div className="absolute inset-0 shader-mesh-gradient opacity-80 pointer-events-none"></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div 
