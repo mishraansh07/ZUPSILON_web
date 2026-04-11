@@ -96,6 +96,49 @@ export default function App() {
         </motion.div>
       </section>
 
+      {/* 3a. THE NYAYA FRAMEWORK (CHARTER) */}
+      <section className="py-24 px-6 lg:px-20 max-w-7xl mx-auto relative overflow-hidden border-t-4 border-black/5">
+        <motion.div
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}
+           variants={smoothFade}
+           className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
+        >
+          <div className="lg:col-span-8">
+            <div className="text-xs font-bold tracking-[0.25em] text-[#60507c] uppercase mb-8 flex items-center gap-3">
+              <span className="w-8 h-px bg-[#60507c]"></span>
+              Lab Charter v1.0
+            </div>
+            <h2 className="text-4xl lg:text-7xl font-black tracking-tight text-[#1a1a1a] leading-[1.0] uppercase mb-12">
+              The Nyaya <br/>
+              <span className="text-[#60507c]">Symmetry.</span>
+            </h2>
+            <div className="space-y-8 max-w-3xl">
+              <p className="text-2xl lg:text-4xl font-medium text-[#1a1a1a] leading-tight tracking-tight">
+                Our research synthesizes classical Indian logic with graph-native neural topologies. 
+              </p>
+              <p className="text-lg text-gray-500 font-medium leading-relaxed">
+                By treating relationships as first-class logical predicates, we enable multi-hop reasoning that transcends the limitations of tabular deep learning. This is not just processing; it is structural inference.
+              </p>
+            </div>
+          </div>
+          <div className="lg:col-span-4 lg:pt-32">
+            <div className="border-l-4 border-[#60507c] pl-8 py-4">
+              <div className="text-sm font-bold tracking-widest uppercase mb-4 text-[#1a1a1a]">Primary Directive</div>
+              <p className="text-sm font-medium text-gray-600 leading-relaxed italic">
+                &quot;To find the structure is to find the soul. Data without topology is noise; topology without reasoning is blind.&quot;
+              </p>
+              <div className="mt-8 flex flex-col gap-4 text-[10px] font-black tracking-[0.2em] uppercase text-[#1a1a1a]/40">
+                <span>01 // STRUCTURAL SYSTHESIS</span>
+                <span>02 // NYAYA CATEGORIZATION</span>
+                <span>03 // HETU (EVIDENCE) VERIFICATION</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
       {/* 4. WHAT YOU BUILD (PLATFORM) */}
       <section id="platform" className="py-32 px-6 lg:px-20 bg-[#fdf9fa] mt-16 relative overflow-hidden">
         <div className="absolute inset-0 shader-mesh-gradient opacity-80 pointer-events-none"></div>
@@ -381,7 +424,7 @@ export default function App() {
             </div>
           </motion.div>
 
-          {/* ── RESEARCH PAPERS ── */}
+          {/* ── RESEARCH INDEX (UPGRADED) ── */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -391,50 +434,64 @@ export default function App() {
           >
             <div className="flex items-center gap-3 mb-10">
               <BookOpen className="w-5 h-5 text-[#60507c]" />
-              <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-[#1a1a1a]">Research Papers</h3>
+              <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-[#1a1a1a]">Published Index</h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="border-t-2 border-[#1a1a1a]">
               {[
                 {
-                  tag: "Preprint — Coming Soon",
+                  id: "RP-26-001",
+                  tag: "PREPRINT",
                   title: "Graph-Native Reasoning at Scale: Beyond Message Passing",
-                  abstract: "We introduce a new class of inference engines designed for multi-hop structural traversal, outperforming standard GNN baselines on heterogeneous real-world graphs.",
-                  authors: "Zupsilon Research Team",
+                  abstract: "New class of inference engines designed for multi-hop structural traversal.",
+                  category: "Structural Inference",
                   year: "2026",
-                  status: "forthcoming",
                 },
                 {
-                  tag: "Preprint — Coming Soon",
+                  id: "RP-26-002",
+                  tag: "PREPRINT",
                   title: "Relationship Intelligence: Rethinking Features in Graph-Structured Data",
-                  abstract: "A systematic study on encoding edge semantics and path-level context as first-class signals in graph learning — with implications for fraud detection and recommendation.",
-                  authors: "Zupsilon Research Team",
+                  abstract: "Systematic study on encoding edge semantics as first-class signals in graph learning.",
+                  category: "Graph Learning",
                   year: "2026",
-                  status: "forthcoming",
+                },
+                {
+                  id: "RP-26-003",
+                  tag: "FORTHCOMING",
+                  title: "Nyaya-GNN: Applying Classical Indian Logic to Neural Architecture",
+                  abstract: "Bridging ancient logical frameworks with modern gradient-based structural optimization.",
+                  category: "AI Philosophy",
+                  year: "2026",
                 },
               ].map((paper, i) => (
                 <motion.div
                   key={i}
                   variants={smoothFade}
-                  className="group border-2 border-[#1a1a1a] bg-white p-8 shadow-[6px_6px_0_0_#1a1a1a] hover:shadow-[10px_10px_0_0_#60507c] hover:border-[#60507c] transition-all duration-400 hover:-translate-y-1 hover:-translate-x-1 cursor-default relative"
+                  className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start py-10 border-b-2 border-gray-100 px-4 hover:bg-[#60507c]/[0.02] transition-colors duration-400 cursor-default"
                 >
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-[10px] font-black tracking-[0.2em] uppercase bg-[#60507c] text-white px-3 py-1">
-                      {paper.tag}
-                    </span>
-                    <span className="text-xs font-bold text-gray-400 tracking-wider">{paper.year}</span>
+                  {/* Metadata Column */}
+                  <div className="md:col-span-2 flex flex-col gap-2">
+                     <span className="text-[10px] font-black tracking-widest text-[#60507c]">{paper.id}</span>
+                     <span className="text-xs font-bold text-gray-400">{paper.year} // {paper.tag}</span>
                   </div>
-                  <h4 className="text-xl font-black tracking-tight text-[#1a1a1a] mb-4 leading-snug group-hover:text-[#60507c] transition-colors duration-300">
-                    {paper.title}
-                  </h4>
-                  <p className="text-sm text-gray-600 font-medium leading-relaxed mb-6">
-                    {paper.abstract}
-                  </p>
-                  <div className="flex items-center justify-between border-t-2 border-gray-100 pt-4">
-                    <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">{paper.authors}</span>
-                    <div className="flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-wider">
-                      <Clock className="w-3.5 h-3.5" />
-                      Forthcoming
+
+                  {/* Title & Abstract Column */}
+                  <div className="md:col-span-7">
+                    <h4 className="text-xl font-black tracking-tight text-[#1a1a1a] mb-3 group-hover:text-[#60507c] transition-colors duration-300 uppercase">
+                      {paper.title}
+                    </h4>
+                    <p className="text-sm text-gray-500 font-medium leading-relaxed max-w-2xl">
+                      {paper.abstract}
+                    </p>
+                  </div>
+
+                  {/* Category & Status Column */}
+                  <div className="md:col-span-3 flex flex-col md:items-end justify-between self-stretch">
+                    <span className="text-[10px] font-black tracking-[0.15em] uppercase bg-black text-white px-3 py-1 mb-4 md:mb-0">
+                      {paper.category}
+                    </span>
+                    <div className="flex items-center gap-2 text-xs font-bold text-[#60507c] uppercase tracking-wider mt-auto group-hover:translate-x-2 transition-transform duration-300">
+                      Access Paper <ArrowUpRight className="w-3.5 h-3.5" />
                     </div>
                   </div>
                 </motion.div>
@@ -501,6 +558,10 @@ export default function App() {
               <p className="text-sm text-white/50 leading-relaxed font-bold">
                 Building Graph Neural Network systems to model real-world relationships.
               </p>
+              <div className="mt-8 pt-8 border-t border-white/10">
+                <p className="text-[10px] font-black tracking-[0.2em] text-[#b19cd9] uppercase">Institutional Research</p>
+                <p className="text-xs text-white/30 mt-2">Open for scientific inquiry & partnership.</p>
+              </div>
             </div>
             
             <div className="flex gap-16 text-sm">
