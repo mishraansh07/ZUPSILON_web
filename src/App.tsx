@@ -30,35 +30,12 @@ export default function App() {
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
       
       {/* 1. HERO SECTION (Dark theme) */}
-      <section className="relative w-full h-screen border-b-2 border-black/10">
+      <section className="relative w-full">
         <AnimationPage />
       </section>
 
-      {/* 2. TRUST / SOCIAL PROOF BAR */}
-      <section className="pt-32 pb-16 px-6 lg:px-20 max-w-7xl mx-auto">
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={smoothFade}
-          className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b-2 border-[#1a1a1a] pb-10 sm:pb-12 gap-8"
-        >
-          <div className="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-[#60507c] uppercase flex-shrink-0 border-2 border-[#60507c] px-3 py-1.5 sm:border-0 sm:p-0 bg-[#60507c]/5 sm:bg-transparent">
-            Systems Online
-          </div>
-          <div className="overflow-hidden w-full relative h-12 flex items-center">
-            <div className="absolute left-0 w-12 sm:w-20 h-full bg-gradient-to-r from-[#fdf9fa] to-transparent z-10"></div>
-            <div className="absolute right-0 w-12 sm:w-20 h-full bg-gradient-to-l from-[#fdf9fa] to-transparent z-10"></div>
-            <div className="animate-marquee flex gap-12 md:text-3xl text-xl tracking-[0.05em] uppercase whitespace-nowrap text-transparent [-webkit-text-stroke:1px_#1a1a1a] font-black hover:text-[#1a1a1a] hover:[-webkit-text-stroke:0px] transition-colors duration-300 cursor-default">
-              <span>GRAPH-NATIVE AI // RELATIONSHIP INTELLIGENCE // MULTI-HOP REASONING // BEYOND TABULAR ML //</span>
-              <span>GRAPH-NATIVE AI // RELATIONSHIP INTELLIGENCE // MULTI-HOP REASONING // BEYOND TABULAR ML //</span>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* 3. WHAT IS ZUPSILON? (RESEARCH) */}
-      <section id="research" className="py-32 px-6 lg:px-20 max-w-7xl mx-auto relative shader-bg-light overflow-hidden">
+      {/* 2. WHAT IS ZUPSILON? (RESEARCH) */}
+      <section id="research" className="py-24 sm:py-32 px-6 lg:px-20 max-w-7xl mx-auto relative overflow-hidden">
         <motion.div 
           initial="hidden"
           whileInView="visible"

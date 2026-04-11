@@ -92,22 +92,22 @@ export default function AnimationPage() {
       <div className="absolute top-24 right-6 lg:right-12 w-12 h-12 border-t-4 border-r-4 border-white/20 z-20 hidden lg:block"></div>
 
       {/* CTA Content */}
-      <div className="relative z-10 flex min-h-screen items-center pt-32 lg:pt-40 pb-16">
-        <div className="w-full lg:w-3/4 px-6 lg:px-16 lg:ml-8 mt-12 lg:mt-0">
+      <div className="relative z-10 flex min-h-screen items-center pt-20 pb-12">
+        <div className="w-full lg:w-3/4 px-6 lg:px-16 lg:ml-8">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-3xl relative"
           >
-            <div className="relative mb-8">
-              <h1 className="text-3xl sm:text-6xl lg:text-8xl font-black leading-[1.0] tracking-tighter uppercase text-white drop-shadow-2xl shader-text-gradient">
-                Structural Reasoning. <br className="hidden lg:block" />
+            <div className="relative mb-6">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.0] tracking-tighter uppercase text-white drop-shadow-2xl shader-text-gradient">
+                Structural Reasoning. <br className="hidden sm:block" />
                 <span className="text-white/40 font-bold">Language Intelligence.</span>
               </h1>
             </div>
 
-            <p className="text-sm sm:text-lg lg:text-2xl text-white mb-10 leading-relaxed font-medium max-w-2xl text-balance bg-black/40 backdrop-blur-md p-6 border-l-4 border-[#b19cd9]">
+            <p className="text-sm sm:text-base lg:text-lg text-white mb-8 leading-relaxed font-medium max-w-2xl text-balance bg-black/40 backdrop-blur-md p-4 sm:p-5 border-l-4 border-[#b19cd9]">
               Zupsilon builds Neural Systems that synthesize Graph Topologies with Language Model reasoning — modeling how data connect and communicate.
             </p>
 
