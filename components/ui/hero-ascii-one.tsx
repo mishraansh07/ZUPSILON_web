@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { MagneticButton } from './magnetic-button';
 import { Navbar } from './navbar';
 
@@ -80,6 +81,10 @@ export default function AnimationPage() {
 
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#0a0a0a]/20 via-[#0a0a0a]/60 to-[#0a0a0a]/90 pointer-events-none"></div>
 
+      {/* Lab Grid Overlay */}
+      <div className="absolute inset-0 z-[1] opacity-20 pointer-events-none" 
+           style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+
       {/* New Responsive Navbar */}
       <Navbar />
 
@@ -89,10 +94,14 @@ export default function AnimationPage() {
       {/* CTA Content */}
       <div className="relative z-10 flex min-h-screen items-center pt-32 lg:pt-40 pb-16">
         <div className="w-full lg:w-3/4 px-6 lg:px-16 lg:ml-8 mt-12 lg:mt-0">
-          <div className="max-w-3xl relative">
-            
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-3xl relative"
+          >
             <div className="relative mb-8">
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] sm:leading-[1.05] tracking-tighter uppercase text-white drop-shadow-2xl shader-text-gradient">
+              <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black leading-[1.0] tracking-tighter uppercase text-white drop-shadow-2xl shader-text-gradient">
                 Structural Reasoning. <br className="hidden lg:block" />
                 <span className="text-white/40 font-bold">Language Intelligence.</span>
               </h1>
@@ -106,7 +115,7 @@ export default function AnimationPage() {
               <MagneticButton>
                 <button 
                   onClick={() => { document.getElementById('lab')?.scrollIntoView({ behavior: 'smooth' }); }}
-                  className="w-full sm:w-auto relative px-8 py-4 bg-white/10 text-white font-bold rounded-none group border-4 border-white backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-black shadow-[8px_8px_0_0_rgba(255,255,255,0.4)] hover:shadow-none uppercase tracking-widest text-sm"
+                  className="w-full sm:w-auto relative px-8 py-4 bg-white/10 text-white font-bold rounded-none group border-4 border-white backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-black shadow-[8px_8px_0_0_rgba(255,255,255,0.4)] hover:shadow-none uppercase tracking-widest text-[10px] sm:text-xs"
                 >
                   Explore Benchmarks
                 </button>
@@ -117,13 +126,13 @@ export default function AnimationPage() {
                   href="/ETA-A_Benchmark_v1.0.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-8 py-4 bg-transparent text-white/80 font-bold tracking-widest uppercase text-sm border-2 border-white/20 hover:bg-white/5 hover:text-white transition-all duration-300 hover:border-white text-center"
+                  className="w-full sm:w-auto px-8 py-4 bg-transparent text-white/80 font-bold tracking-widest uppercase text-[10px] sm:text-xs border-2 border-white/20 hover:bg-white/5 hover:text-white transition-all duration-300 hover:border-white text-center"
                 >
                   Read Lab Report
                 </a>
               </MagneticButton>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </main>

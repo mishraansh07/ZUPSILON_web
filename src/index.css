@@ -14,11 +14,18 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* Match navbar height for anchor links */
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body::after {
@@ -35,16 +42,21 @@ body::after {
   font-family: 'Noto Serif Devanagari', serif;
 }
 
+::selection {
+  background-color: var(--primary);
+  color: white;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
   background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
   background: #d4cfdc;
-  border-radius: 10px;
+  border: 2px solid var(--background);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);

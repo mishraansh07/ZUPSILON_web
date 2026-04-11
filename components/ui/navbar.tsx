@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
+import { Menu, X, ArrowUpRight, ShieldCheck } from 'lucide-react';
 
 interface NavLink {
   name: string;
@@ -19,6 +19,13 @@ const navLinks: NavLink[] = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   // Handle scroll for glass effect
   useEffect(() => {
@@ -41,16 +48,25 @@ export const Navbar = () => {
     <>
       <nav 
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 border-b-4 border-black ${
-          scrolled ? 'bg-white/90 backdrop-blur-md h-16' : 'bg-white h-20'
+          scrolled ? 'bg-white/95 backdrop-blur-md h-16' : 'bg-white h-20'
         }`}
       >
+        {/* Scroll Progress Bar */}
+        <motion.div
+          className="absolute bottom-[-4px] left-0 right-0 h-1 bg-[#60507c] z-[101] origin-[0%]"
+          style={{ scaleX }}
+        />
+
         <div className="container mx-auto px-6 lg:px-12 h-full flex items-center justify-between">
           {/* Brand */}
           <div 
-            className="flex items-center gap-4 cursor-pointer" 
+            className="flex items-center gap-4 cursor-pointer group" 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img src="/logo.png" alt="Logo" className="h-6 lg:h-8 w-auto grayscale brightness-0" />
+            <div className="relative">
+              <img src="/logo.png" alt="Logo" className="h-6 lg:h-8 w-auto grayscale brightness-0 group-hover:grayscale-0 transition-all duration-500" />
+              <div className="absolute -inset-2 border border-[#60507c]/0 group-hover:border-[#60507c]/50 transition-all duration-500 scale-110 opacity-0 group-hover:opacity-100"></div>
+            </div>
             <span className="text-black text-xl font-black tracking-widest uppercase">Zupsilon</span>
           </div>
 
@@ -60,7 +76,7 @@ export const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="h-full px-8 text-[10px] font-black uppercase tracking-[0.25em] text-black hover:bg-black hover:text-white transition-all duration-200 border-l-2 border-black last:border-r-2"
+                className="h-full px-8 text-[11px] font-black uppercase tracking-[0.25em] text-black hover:bg-black hover:text-white transition-all duration-200 border-l-2 border-black last:border-r-2"
               >
                 {link.name}
               </button>
@@ -69,12 +85,12 @@ export const Navbar = () => {
 
           {/* Right Section: Status & Mobile Toggle */}
           <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-3 px-4 py-2 border-2 border-black bg-[#60507c] text-white">
+            <div className="hidden md:flex items-center gap-3 px-4 py-2 border-2 border-black bg-white text-black hover:bg-[#60507c] hover:text-white transition-colors duration-300">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#60507c] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#60507c]"></span>
               </span>
-              <span className="text-[10px] font-black uppercase tracking-widest">v1.0 ONLINE</span>
+              <span className="text-[10px] font-black uppercase tracking-widest">v1.0 SYNCED</span>
             </div>
             
             {/* Mobile Menu Toggle */}
