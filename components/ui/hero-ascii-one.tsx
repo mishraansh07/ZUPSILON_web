@@ -3,19 +3,9 @@
 import { useEffect, useState } from 'react';
 import { MagneticButton } from './magnetic-button';
 
-export default function AnimationPage({ onOpenWaitlist }: { onOpenWaitlist?: () => void }) {
-  const [waitlistCount, setWaitlistCount] = useState<number | string>('...');
-
-  const fetchCount = () => {
-    fetch(`/api/count?t=${Date.now()}`)
-      .then(res => res.json())
-      .then(data => setWaitlistCount(data.count))
-      .catch(err => console.error("Error fetching waitlist count", err));
-  };
+export default function AnimationPage() {
 
   useEffect(() => {
-    fetchCount();
-    window.addEventListener('waitlistUpdated', fetchCount);
     
     const embedScript = document.createElement('script');
     embedScript.type = 'text/javascript';
@@ -75,7 +65,6 @@ export default function AnimationPage({ onOpenWaitlist }: { onOpenWaitlist?: () 
     setTimeout(hideBranding, 500); setTimeout(hideBranding, 1000); setTimeout(hideBranding, 2000); setTimeout(hideBranding, 5000); setTimeout(hideBranding, 10000);
 
     return () => {
-      window.removeEventListener('waitlistUpdated', fetchCount);
       clearInterval(interval);
       document.head.removeChild(embedScript);
       document.head.removeChild(style);
@@ -101,17 +90,9 @@ export default function AnimationPage({ onOpenWaitlist }: { onOpenWaitlist?: () 
           </div>
           
           <div className="hidden lg:flex items-center gap-6 text-xs font-bold text-white/50 tracking-wider z-50 relative">
-            <MagneticButton>
-              <button 
-                onClick={onOpenWaitlist}
-                className="px-6 py-2 bg-white text-black font-black uppercase tracking-[0.15em] border-2 border-white hover:bg-black hover:text-white transition-all shadow-[4px_4px_0_0_#b19cd9] hover:shadow-none"
-              >
-                Join Early Access
-              </button>
-            </MagneticButton>
             <span className="flex items-center gap-2 border-2 border-white/10 px-3 py-1">
               <span className="w-2 h-2 bg-[#b19cd9] opacity-80"></span>
-              NOW IN BETA
+              LABORATORY v1.0 ONLINE
             </span>
           </div>
         </div>
@@ -141,25 +122,23 @@ export default function AnimationPage({ onOpenWaitlist }: { onOpenWaitlist?: () 
             <div className="flex flex-col sm:flex-row gap-6 items-center">
               <MagneticButton>
                 <button 
-                  onClick={() => { document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' }); }}
+                  onClick={() => { document.getElementById('lab')?.scrollIntoView({ behavior: 'smooth' }); }}
                   className="relative px-8 py-4 bg-white/10 text-white font-bold rounded-none group border-4 border-white backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-black shadow-[8px_8px_0_0_rgba(255,255,255,0.4)] hover:shadow-none uppercase tracking-widest text-sm"
                 >
-                  See How It Works
+                  Explore Benchmarks
                 </button>
               </MagneticButton>
               
               <MagneticButton>
-                <button 
-                  onClick={onOpenWaitlist}
-                  className="px-8 py-4 bg-transparent text-white/80 font-bold tracking-widest uppercase text-sm border-2 border-white/20 hover:bg-white/5 hover:text-white transition-all duration-300 hover:border-white"
+                <a 
+                  href="/ETA-A_Benchmark_v1.0.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-4 bg-transparent text-white/80 font-bold tracking-widest uppercase text-sm border-2 border-white/20 hover:bg-white/5 hover:text-white transition-all duration-300 hover:border-white text-center"
                 >
-                  Join Early Access
-                </button>
+                  Read Lab Report
+                </a>
               </MagneticButton>
-              <div className="text-white/60 text-sm font-bold uppercase tracking-widest border-l-2 border-white/20 pl-6 py-2 ml-2">
-                <span className="text-[#b19cd9] text-xl mr-2 animate-pulse">{typeof waitlistCount === 'number' ? Math.max(0, 50 - waitlistCount) : '...'}</span>
-                <br/>Spots Remaining
-              </div>
             </div>
           </div>
         </div>

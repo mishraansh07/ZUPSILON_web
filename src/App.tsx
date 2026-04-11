@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, FlaskConical, BookOpen, BarChart3, Clock } from 'lucide-react';
 import AnimationPage from '../components/ui/hero-ascii-one';
-import { Scroller } from '@/components/ui/scroller-1';
 import { Preloader } from '@/components/ui/preloader';
-import { MagneticButton } from '@/components/ui/magnetic-button';
 import { LegalModal } from '@/components/ui/legal-modal';
-import { WaitlistModal } from '@/components/ui/waitlist-modal';
 import { ContactModal } from '@/components/ui/contact-modal';
-import { WaitlistCountDisplay } from '@/components/ui/waitlist-count-display';
 
 const smoothFade: any = {
   hidden: { opacity: 0, y: 40 },
@@ -25,19 +21,17 @@ const staggerContainer: any = {
 
 export default function App() {
   const [legalContent, setLegalContent] = useState<'privacy' | 'terms' | null>(null);
-  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
     <div className="w-full min-h-screen bg-[#fdf9fa] text-[#1a1a1a] selection:bg-[#60507c] selection:text-white font-sans overflow-x-hidden">
       <Preloader />
       <LegalModal content={legalContent} onClose={() => setLegalContent(null)} />
-      <WaitlistModal isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
       
       {/* 1. HERO SECTION (Dark theme) */}
       <section className="relative w-full h-screen border-b-2 border-black/10">
-        <AnimationPage onOpenWaitlist={() => setIsWaitlistOpen(true)} />
+        <AnimationPage />
       </section>
 
       {/* 2. TRUST / SOCIAL PROOF BAR */}
@@ -181,46 +175,295 @@ export default function App() {
         </motion.div>
       </section>
 
-      {/* 6. USE CASES WITH SCROLLER COMPONENT */}
-      <section className="py-32 px-0 bg-gray-100 border-y-4 border-black relative overflow-hidden">
-        <div className="absolute inset-0 shader-mesh-gradient-dark opacity-30 pointer-events-none mix-blend-multiply"></div>
-        <div className="max-w-7xl mx-auto px-6 lg:px-20 mb-20 relative z-10">
-          <motion.div 
+      {/* 6. ETA-A BENCHMARK SHOWCASE */}
+      <section className="py-32 px-6 lg:px-20 bg-[#0e0e0e] border-y-4 border-[#60507c] relative overflow-hidden">
+        <div className="absolute inset-0 shader-bg-dark opacity-30 pointer-events-none" />
+        <div className="max-w-7xl mx-auto relative z-10">
+
+          {/* Header */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={smoothFade}
+            className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b-2 border-white/10 pb-10 gap-6"
+          >
+            <div>
+              <div className="flex items-center gap-3 text-xs font-bold tracking-[0.25em] text-[#b19cd9] uppercase mb-4">
+                <BarChart3 className="w-4 h-4" />
+                ETA-A Benchmark Report v1.0
+              </div>
+              <h2 className="text-4xl lg:text-6xl font-black tracking-tight text-white leading-[1.05] uppercase">
+                Numbers.<br />
+                <span className="text-[#b19cd9]">No Noise.</span>
+              </h2>
+            </div>
+            <div className="flex flex-col gap-3 md:text-right">
+              <p className="text-white/60 font-medium text-sm leading-relaxed max-w-xs md:ml-auto">
+                Four architectures. Five independent trials. Legal precedent retrieval on Citation Dataset v4.0 — 500 nodes, 1950–2024.
+              </p>
+              <a
+                href="/ETA-A_Benchmark_v1.0 (2).pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[#b19cd9] font-bold text-xs tracking-widest uppercase hover:text-white transition-colors duration-300"
+              >
+                <BookOpen className="w-3.5 h-3.5" /> Read Full Report <ArrowUpRight className="w-3 h-3" />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Results Table */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+            className="mb-16"
+          >
+            {/* Column Headers */}
+            <div className="hidden md:grid grid-cols-5 gap-0 border-b-2 border-white/20 pb-4 mb-2 px-6">
+              {['Architecture', 'MRR ↑', 'AUC ↑', 'Latency (ms/node) ↓', 'Throughput (nodes/s) ↑'].map((h, i) => (
+                <div key={i} className={`text-[10px] font-black tracking-[0.2em] uppercase ${i === 0 ? 'text-white/50' : 'text-[#b19cd9]/70 text-right'}`}>{h}</div>
+              ))}
+            </div>
+
+            {/* Rows */}
+            {[
+              { arch: 'Simple MLP', tag: 'Semantic Baseline', mrr: '0.365', auc: '0.739', lat: '0.0012', tput: '1,670', highlight: false, note: 'Leads on ranking precision at N=500. Dominant semantic signal.' },
+              { arch: 'Legal GCN', tag: 'Recommended Production', mrr: '0.313', auc: '0.684', lat: '0.0047', tput: '1,330', highlight: true, note: 'Only model with citation path tracing & doctrinal lineage. Recommended architecture.' },
+              { arch: 'GraphSAGE', tag: 'Experimental', mrr: '0.100', auc: '0.608', lat: '0.0074', tput: '1,027', highlight: false, note: 'Underperforms at N=500. Expected to improve at larger scale.' },
+              { arch: 'Legal GAT', tag: 'Experimental', mrr: '0.063', auc: '0.603', lat: '0.0071', tput: '672', highlight: false, note: 'Attention overfits on sparse neighbourhoods. Not recommended at this scale.' },
+            ].map((row, i) => (
+              <motion.div
+                key={i}
+                variants={smoothFade}
+                className={`group grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-0 items-start md:items-center px-6 py-6 border-b border-white/10 transition-all duration-300 cursor-default ${
+                  row.highlight
+                    ? 'bg-[#60507c]/20 border-l-4 border-l-[#b19cd9] hover:bg-[#60507c]/30'
+                    : 'hover:bg-white/5'
+                }`}
+              >
+                {/* Arch */}
+                <div className="flex flex-col gap-1">
+                  <div className="flex items-center gap-3">
+                    <span className="text-white font-black text-base tracking-tight">{row.arch}</span>
+                    {row.highlight && <span className="text-[9px] font-black tracking-widest uppercase bg-[#b19cd9] text-black px-2 py-0.5">★ Prod</span>}
+                  </div>
+                  <span className="text-white/30 text-xs font-bold uppercase tracking-wider">{row.tag}</span>
+                </div>
+                {/* MRR */}
+                <div className="flex flex-col md:items-end">
+                  <span className="text-[#b19cd9] font-black text-2xl">{row.mrr}</span>
+                  <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest md:hidden">MRR</span>
+                </div>
+                {/* AUC */}
+                <div className="flex flex-col md:items-end">
+                  <span className="text-white font-bold text-xl">{row.auc}</span>
+                  <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest md:hidden">AUC</span>
+                </div>
+                {/* Latency */}
+                <div className="flex flex-col md:items-end">
+                  <span className="text-white/80 font-bold text-xl">{row.lat}</span>
+                  <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest md:hidden">Latency ms/node</span>
+                </div>
+                {/* Throughput */}
+                <div className="flex flex-col md:items-end">
+                  <span className="text-white/80 font-bold text-xl">{row.tput}</span>
+                  <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest md:hidden">Throughput nodes/s</span>
+                  <p className="text-white/30 text-xs font-medium leading-relaxed mt-1 max-w-[200px] md:text-right hidden lg:block">{row.note}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Key Findings Strip */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-0 border-2 border-white/15"
+          >
+            {[
+              { label: 'Recommended Path', value: 'Hybrid MLP + GCN', sub: 'Fast semantic ranking + deep structural re-ranking' },
+              { label: 'GCN Latency Overhead', value: '4× vs MLP', sub: '0.0047 ms/node — operationally acceptable' },
+              { label: 'Next Milestone', value: 'N = 5,000', sub: 'Benchmark v2.0 — GNN structural advantage expected to emerge' },
+            ].map((kf, i) => (
+              <motion.div
+                key={i}
+                variants={smoothFade}
+                className="flex flex-col p-8 border-r border-white/10 last:border-r-0 group hover:bg-white/5 transition-colors duration-300"
+              >
+                <div className="text-[10px] font-black tracking-[0.2em] uppercase text-[#b19cd9]/60 mb-3">{kf.label}</div>
+                <div className="text-2xl font-black text-white tracking-tight mb-2">{kf.value}</div>
+                <div className="text-xs text-white/40 font-medium leading-relaxed">{kf.sub}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+        </div>
+      </section>
+
+
+      {/* 7. RESEARCH LAB SECTION */}
+      <section id="lab" className="py-32 px-6 lg:px-20 bg-[#fdf9fa] relative overflow-hidden">
+        <div className="absolute inset-0 shader-bg-light opacity-60 pointer-events-none" />
+        <div className="max-w-7xl mx-auto relative z-10">
+
+          {/* Section Header */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={smoothFade}
+            className="flex flex-col md:flex-row md:items-end justify-between mb-20 border-b-4 border-[#1a1a1a] pb-10 gap-6"
+          >
+            <div>
+              <div className="flex items-center gap-3 text-xs font-bold tracking-[0.25em] text-[#60507c] uppercase mb-4">
+                <FlaskConical className="w-4 h-4" />
+                Research Lab
+              </div>
+              <h2 className="text-5xl lg:text-7xl font-black tracking-tight text-[#1a1a1a] leading-[1.02] uppercase">
+                Proof.<br />
+                <span className="text-[#60507c]">Not Promise.</span>
+              </h2>
+            </div>
+            <p className="text-lg text-gray-600 font-medium max-w-sm leading-relaxed md:text-right">
+              Our benchmarks, evaluations, and published research — open for scrutiny.
+            </p>
+          </motion.div>
+
+          {/* ── BENCHMARK RESULTS ── */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+            className="mb-24"
+          >
+            <div className="flex items-center gap-3 mb-10">
+              <BarChart3 className="w-5 h-5 text-[#60507c]" />
+              <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-[#1a1a1a]">Benchmark Results</h3>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-[#1a1a1a]">
+              {[
+                { metric: "Node Classification", dataset: "OGB-ArXiv", value: "—", unit: "Acc.", tag: "Coming Soon", color: "#60507c" },
+                { metric: "Link Prediction", dataset: "OGB-Collab", value: "—", unit: "Hits@50", tag: "Coming Soon", color: "#60507c" },
+                { metric: "Graph Classification", dataset: "TUDataset", value: "—", unit: "Acc.", tag: "Coming Soon", color: "#60507c" },
+                { metric: "Fraud Detection", dataset: "Yelp-Chi", value: "—", unit: "F1", tag: "Coming Soon", color: "#60507c" },
+              ].map((bench, i) => (
+                <motion.div
+                  key={i}
+                  variants={smoothFade}
+                  className="flex flex-col p-8 border-r-2 border-[#1a1a1a] last:border-r-0 group relative overflow-hidden cursor-default hover:bg-[#60507c] hover:text-white transition-colors duration-500"
+                >
+                  <div className="text-[3.5rem] font-black leading-none mb-2 text-[#60507c] group-hover:text-white transition-colors duration-500">
+                    {bench.value}
+                  </div>
+                  <div className="text-xs font-bold tracking-widest uppercase text-gray-400 group-hover:text-white/70 transition-colors duration-500 mb-4">
+                    {bench.unit}
+                  </div>
+                  <div className="mt-auto">
+                    <div className="text-sm font-bold text-[#1a1a1a] group-hover:text-white transition-colors duration-500 uppercase tracking-wide">
+                      {bench.metric}
+                    </div>
+                    <div className="text-xs text-gray-500 group-hover:text-white/60 transition-colors duration-500 mt-1 font-medium">
+                      {bench.dataset}
+                    </div>
+                  </div>
+                  <span className="absolute top-4 right-4 text-[10px] font-black tracking-widest uppercase border border-current px-2 py-0.5 text-[#60507c] group-hover:text-white group-hover:border-white/50 transition-colors duration-500">
+                    {bench.tag}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ── RESEARCH PAPERS ── */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+            className="mb-20"
+          >
+            <div className="flex items-center gap-3 mb-10">
+              <BookOpen className="w-5 h-5 text-[#60507c]" />
+              <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-[#1a1a1a]">Research Papers</h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                {
+                  tag: "Preprint — Coming Soon",
+                  title: "Graph-Native Reasoning at Scale: Beyond Message Passing",
+                  abstract: "We introduce a new class of inference engines designed for multi-hop structural traversal, outperforming standard GNN baselines on heterogeneous real-world graphs.",
+                  authors: "Zupsilon Research Team",
+                  year: "2026",
+                  status: "forthcoming",
+                },
+                {
+                  tag: "Preprint — Coming Soon",
+                  title: "Relationship Intelligence: Rethinking Features in Graph-Structured Data",
+                  abstract: "A systematic study on encoding edge semantics and path-level context as first-class signals in graph learning — with implications for fraud detection and recommendation.",
+                  authors: "Zupsilon Research Team",
+                  year: "2026",
+                  status: "forthcoming",
+                },
+              ].map((paper, i) => (
+                <motion.div
+                  key={i}
+                  variants={smoothFade}
+                  className="group border-2 border-[#1a1a1a] bg-white p-8 shadow-[6px_6px_0_0_#1a1a1a] hover:shadow-[10px_10px_0_0_#60507c] hover:border-[#60507c] transition-all duration-400 hover:-translate-y-1 hover:-translate-x-1 cursor-default relative"
+                >
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-[10px] font-black tracking-[0.2em] uppercase bg-[#60507c] text-white px-3 py-1">
+                      {paper.tag}
+                    </span>
+                    <span className="text-xs font-bold text-gray-400 tracking-wider">{paper.year}</span>
+                  </div>
+                  <h4 className="text-xl font-black tracking-tight text-[#1a1a1a] mb-4 leading-snug group-hover:text-[#60507c] transition-colors duration-300">
+                    {paper.title}
+                  </h4>
+                  <p className="text-sm text-gray-600 font-medium leading-relaxed mb-6">
+                    {paper.abstract}
+                  </p>
+                  <div className="flex items-center justify-between border-t-2 border-gray-100 pt-4">
+                    <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">{paper.authors}</span>
+                    <div className="flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-wider">
+                      <Clock className="w-3.5 h-3.5" />
+                      Forthcoming
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ── COMING SOON STRIP ── */}
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={smoothFade}
+            className="border-4 border-dashed border-[#1a1a1a]/30 p-10 flex flex-col md:flex-row items-center justify-between gap-6 bg-[#1a1a1a]/[0.02]"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold tracking-tight">Real-World Relevance</h2>
-          </motion.div>
-        </div>
-
-        <div className="relative z-10 pl-6 lg:pl-20">
-          <Scroller overflow="x" withButtons childrenContainerClassName="gap-8 pr-6 lg:pr-20 py-8 pl-4">
-            {[
-              { img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200", title: "Financial Networks", desc: "Detect fraud before it propagates. Follow the money across hidden shells." },
-              { img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200", title: "Knowledge Graphs", desc: "Connect research across disciplines. Find the insight that lives between papers." },
-              { img: "https://images.unsplash.com/photo-1555421689-d68471e189f2?q=80&w=1200", title: "Recommendation Systems", desc: "Move beyond collaborative filtering. Understand why people connect." },
-              { img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200", title: "Social Graphs", desc: "Map communities, detect influence clusters, predict churn." }
-            ].map((useCase, i) => (
-              <div key={i} className="group relative overflow-hidden bg-white cursor-pointer w-[85vw] sm:w-[450px] h-[350px] flex-shrink-0 border-4 border-black shadow-[8px_8px_0_0_#1a1a1a] hover:shadow-[12px_12px_0_0_#1a1a1a] transition-all duration-300 hover:-translate-y-2 hover:-translate-x-2">
-                <img src={useCase.img} alt={useCase.title} className="absolute inset-0 w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-[0.22,1,0.36,1]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-8 w-full flex flex-col justify-between gap-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white tracking-tight mb-2">{useCase.title}</h3>
-                    <p className="text-white/80 font-medium text-sm leading-relaxed">{useCase.desc}</p>
-                  </div>
-                  <div className="w-10 h-10 bg-white flex flex-shrink-0 items-center justify-center text-black opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-lg mt-2">
-                    <ArrowUpRight className="w-5 h-5" />
-                  </div>
-                </div>
+            <div>
+              <div className="text-xs font-bold tracking-[0.25em] text-[#60507c] uppercase mb-2">On the Horizon</div>
+              <h4 className="text-2xl font-black text-[#1a1a1a] uppercase tracking-tight">More results are being finalized.</h4>
+              <p className="text-gray-500 font-medium text-sm mt-2">Full benchmark releases, ablation studies, and dataset cards dropping with our public beta.</p>
+            </div>
+            <div className="flex-shrink-0">
+              <div className="border-2 border-[#1a1a1a] px-6 py-3 bg-white shadow-[4px_4px_0_0_#60507c] text-sm font-black tracking-widest uppercase text-[#1a1a1a] cursor-default">
+                Stay Tuned
               </div>
-            ))}
-          </Scroller>
+            </div>
+          </motion.div>
+
         </div>
       </section>
-
 
       {/* 9. ABOUT / TEAM & 10. CTA SECTION */}
       <section className="py-32 px-6 lg:px-20 bg-black text-white border-t-8 border-[#60507c] relative overflow-hidden">
@@ -232,24 +475,15 @@ export default function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h2 className="text-5xl lg:text-8xl font-black mb-8 tracking-tighter uppercase">Intelligence. <br/>Evolved.</h2>
-            <p className="text-xl text-white/70 mb-8 font-medium max-w-2xl mx-auto leading-relaxed text-balance">
-              Built by ML engineers and systems architects who've worked at the edges of graph research. We're opening early access to a select group of partners.
+            <h2 className="text-4xl lg:text-7xl font-black mb-10 tracking-tighter uppercase leading-[1.1]">The Architecture <br/>of Reasoning.</h2>
+            <p className="text-xl text-white/70 mb-12 font-medium max-w-2xl mx-auto leading-relaxed text-balance">
+              Pioneering a new frontier in Graph Neural Networks. Our laboratory operates at the intersection of structural topology and semantic intelligence, building systems that don't just process data—they understand it.
             </p>
             
-            <WaitlistCountDisplay />
-            
-            <p className="text-lg font-bold text-[#b19cd9] mb-12 tracking-widest uppercase mt-4">
-              50 teams. First come, first mapped.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-              <MagneticButton>
-                <button onClick={() => setIsWaitlistOpen(true)} className="px-10 py-5 bg-white text-black font-bold text-lg hover:scale-105 transition-transform duration-500 flex items-center gap-3 shadow-[8px_8px_0_0_#60507c] border-2 border-transparent hover:border-black group relative z-50">
-                  <span className="group-hover:mr-2 transition-all duration-300">Join Early Access</span> 
-                  <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300" />
-                </button>
-              </MagneticButton>
+            <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-[10px] font-black tracking-[0.3em] uppercase text-[#b19cd9]">
+              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#b19cd9]"></span> Research First</span>
+              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#b19cd9]"></span> Scalable Reasoning</span>
+              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#b19cd9]"></span> Open Documentation</span>
             </div>
           </motion.div>
         </div>
@@ -275,6 +509,7 @@ export default function App() {
                 <a href="#platform" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Platform</a>
                 <a href="#research" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Research</a>
                 <a href="#philosophy" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Philosophy</a>
+                <a href="#lab" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Research Lab</a>
               </div>
               <div className="flex flex-col gap-4">
                 <span className="text-white font-bold mb-2 tracking-wider text-xs uppercase bg-[#60507c] px-2 py-1 w-fit">Connect</span>

@@ -31,3 +31,11 @@ dist-ssr
 .env.production.local
 
 .vercel
+
+# Temp PDF processing
+__pdflib/
+pdf_content.txt
+ETA-A_Benchmark_v1.0 (2).pdf
+
+# Local DB
+server/waitlist.db
