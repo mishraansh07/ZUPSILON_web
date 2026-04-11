@@ -75,8 +75,8 @@ export default function AnimationPage() {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#0a0a0a]">
-      {/* Hard mask — covers any UnicornStudio watermark at the bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-10 bg-[#0a0a0a] z-50 pointer-events-none" />
+      {/* Gradient fade — smooth hero-to-content transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent z-50 pointer-events-none" />
 
       <div className="absolute inset-0 w-full h-full">
         <div data-us-project="OMzqyUv6M3kSnv0JeAtC" style={{ width: '100%', height: '100%', minHeight: '100vh' }} />

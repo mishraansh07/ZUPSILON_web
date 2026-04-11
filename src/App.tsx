@@ -23,7 +23,7 @@ const staggerContainer: any = {
 const SectionLabel = ({ number, label }: { number: string; label: string }) => (
   <div className="flex items-center gap-4 mb-8">
     <span className="text-[10px] font-black tracking-[0.3em] text-[#60507c]/50 uppercase">{number}</span>
-    <span className="w-8 h-px bg-[#60507c]/40"></span>
+    <span className="w-8 h-px bg-[#60507c]/40 animate-line-grow"></span>
     <span className="text-[10px] font-black tracking-[0.3em] text-[#60507c] uppercase">{label}</span>
   </div>
 );
@@ -84,11 +84,11 @@ export default function App() {
                 { num: "II", word: "विचार", meaning: "Inference", desc: "Executing multi-hop logic chains to discover latent connections within complex network structures." },
                 { num: "III", word: "युक्ति", meaning: "Synthesis", desc: "Transforming structural topology into actionable intelligence through hybrid Graph-LLM reasoning." }
               ].map((pillar, i) => (
-                <motion.div key={i} variants={smoothFade} className="flex items-start gap-6 py-8 group">
-                  <span className="text-[10px] font-black tracking-widest text-[#60507c]/40 pt-1 w-6 shrink-0">{pillar.num}</span>
+                <motion.div key={i} variants={smoothFade} className="flex items-start gap-6 py-8 group cursor-default">
+                  <span className="text-[10px] font-black tracking-widest text-[#60507c]/40 pt-1 w-6 shrink-0 group-hover:text-[#60507c] transition-colors duration-300">{pillar.num}</span>
                   <div className="flex flex-col gap-2">
-                    <div className="text-2xl text-[#60507c] font-bold font-sanskrit leading-none">{pillar.word}</div>
-                    <h3 className="text-base font-black tracking-widest text-[#1a1a1a] uppercase">{pillar.meaning}</h3>
+                    <div className="text-2xl text-[#60507c] font-bold font-sanskrit leading-none group-hover:scale-105 transition-transform duration-300 origin-left">{pillar.word}</div>
+                    <h3 className="text-base font-black tracking-widest text-[#1a1a1a] uppercase group-hover:text-[#60507c] transition-colors duration-300">{pillar.meaning}</h3>
                     <p className="text-sm text-gray-500 font-medium leading-relaxed">{pillar.desc}</p>
                   </div>
                 </motion.div>
@@ -209,7 +209,7 @@ export default function App() {
               <div className="p-6 border-l-4 border-dashed border-[#b19cd9] bg-white/60">
                 <h4 className="text-xs font-black uppercase tracking-widest mb-2 text-[#1a1a1a]">Open Collaboration</h4>
                 <p className="text-sm text-gray-500 italic mb-3">Interested in structural reasoning or Graph-LLM hybridization? We are open for researcher-led partnerships.</p>
-                <a href="mailto:anshmishra@zupsilonai.me" className="text-xs font-black text-[#60507c] hover:underline uppercase tracking-wider inline-flex items-center gap-1">
+                <a href="mailto:anshmishra@zupsilonai.me" className="text-xs font-black text-[#60507c] hover:underline uppercase tracking-wider inline-flex items-center gap-1 link-underline btn-press">
                   Inquire for Collaboration <ArrowUpRight size={12} />
                 </a>
               </div>
@@ -246,14 +246,14 @@ export default function App() {
             </motion.div>
 
             <motion.div variants={smoothFade} className="lg:w-6/12 w-full">
-              <div className="border-4 border-[#1a1a1a] bg-[#fdf9fa] shadow-[8px_8px_0_0_#60507c] transition-all duration-300 hover:shadow-[12px_12px_0_0_#1a1a1a] hover:-translate-y-1 hover:-translate-x-1">
+              <div className="border-4 border-[#1a1a1a] bg-[#fdf9fa] shadow-[8px_8px_0_0_#60507c] transition-all duration-300 hover:shadow-[12px_12px_0_0_#1a1a1a] hover:-translate-y-1 hover:-translate-x-1 card-lift">
                 {[
                   { num: "01", title: "Manifold Layer", desc: "Quantifying relationship gradients across entity nodes in real-time." },
                   { num: "02", title: "Logical Synthesis", desc: "Assembling multi-source data into coherent, navigable logical predicates." },
                   { num: "03", title: "Structural Inference", desc: "Navigating deep-hop relationship chains with semantic precision." }
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-6 p-8 border-b-2 border-black/8 last:border-0 group hover:bg-[#60507c]/5 transition-colors duration-300">
-                    <span className="text-[10px] font-black tracking-widest text-[#60507c]/50 pt-1 shrink-0">{item.num}</span>
+                    <span className="text-[10px] font-black tracking-widest text-[#60507c]/50 pt-1 shrink-0 group-hover:text-[#60507c] transition-colors duration-200">{item.num}</span>
                     <div>
                       <h4 className="text-sm font-black text-[#1a1a1a] uppercase tracking-wide mb-1">{item.title}</h4>
                       <p className="text-sm text-gray-500 font-medium">{item.desc}</p>
@@ -300,7 +300,7 @@ export default function App() {
               { step: "02", title: "Relationship Mapping", desc: "Constructing multi-dimensional edge networks to highlight latent connections." },
               { step: "03", title: "Insight Generation", desc: "Generates predictions, classifications, and structural insight — across the full graph." }
             ].map((step, i) => (
-              <motion.div key={i} variants={smoothFade} className="flex flex-col p-8 border-r-2 border-black/8 last:border-r-0 group hover:bg-[#60507c] hover:text-white transition-colors duration-500">
+              <motion.div key={i} variants={smoothFade} className="flex flex-col p-8 border-r-2 border-black/8 last:border-r-0 group hover:bg-[#60507c] hover:text-white transition-colors duration-500 card-lift">
                 <div className="text-[10px] font-black tracking-[0.3em] text-[#60507c] group-hover:text-white/60 uppercase mb-6 transition-colors duration-500">
                   {step.step}
                 </div>
@@ -478,9 +478,9 @@ export default function App() {
                 <motion.div
                   key={i}
                   variants={smoothFade}
-                  className="flex flex-col p-8 border-r-2 border-[#1a1a1a] last:border-r-0 group relative overflow-hidden cursor-default hover:bg-[#60507c] hover:text-white transition-colors duration-500"
+                  className={`flex flex-col p-8 border-r-2 border-[#1a1a1a] last:border-r-0 group relative overflow-hidden cursor-default hover:bg-[#60507c] hover:text-white transition-colors duration-500 card-lift`}
                 >
-                  <div className="text-[3rem] font-black leading-none mb-1 text-[#60507c] group-hover:text-white transition-colors duration-500">
+                  <div className="text-[3rem] font-black leading-none mb-1 text-[#60507c] group-hover:text-white transition-colors duration-500 animate-count-pop">
                     {bench.value}
                   </div>
                   <div className="text-[10px] font-black tracking-widest uppercase text-gray-400 group-hover:text-white/60 transition-colors duration-500 mb-4">
