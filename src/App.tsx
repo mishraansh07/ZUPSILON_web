@@ -524,7 +524,6 @@ export default function App() {
               </div>
             </div>
           </motion.div>
-          </motion.div>
 
           {/* ── COMING SOON STRIP ── */}
           <motion.div
