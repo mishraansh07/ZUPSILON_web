@@ -116,10 +116,10 @@ export default function App() {
             </h2>
             <div className="space-y-8 max-w-3xl">
               <p className="text-2xl lg:text-4xl font-medium text-[#1a1a1a] leading-tight tracking-tight">
-                Our research synthesizes classical Indian logic with graph-native neural topologies. 
+                Our research synthesizes classical Indian logic with graph-native topologies and large-scale language models. 
               </p>
               <p className="text-lg text-gray-500 font-medium leading-relaxed">
-                By treating relationships as first-class logical predicates, we enable multi-hop reasoning that transcends the limitations of tabular deep learning. This is not just processing; it is structural inference.
+                By treating relationships and linguistic semantics as first-class logical predicates, we enable multi-hop reasoning that bridges structural manifold learning with generative intelligence. This is not just processing; it is structural synthesis.
               </p>
             </div>
           </div>
@@ -137,6 +137,68 @@ export default function App() {
             </div>
           </div>
         </motion.div>
+      </section>
+
+      {/* 3b. THE LABORATORY (ABOUT & FOUNDER) */}
+      <section id="about" className="py-32 px-6 lg:px-20 bg-white border-y-2 border-black/5 relative overflow-hidden">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            {/* Founder Image */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-5 relative"
+            >
+              <div className="relative z-10 border-8 border-black grayscale hover:grayscale-0 transition-all duration-700 shadow-[20px_20px_0_0_#60507c]">
+                <img 
+                  src="/founder.jpg" 
+                  alt="Ansh Mishra - Founder" 
+                  className="w-full aspect-square object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000"; // Fallback professional avatar
+                  }}
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#eee5e8] -z-10"></div>
+            </motion.div>
+
+            {/* Content */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-7"
+            >
+              <div className="text-xs font-bold tracking-[0.2em] text-[#60507c] uppercase mb-6 flex items-center gap-2">
+                <span className="w-2 h-2 bg-[#60507c]"></span>
+                The Founder
+              </div>
+              <h3 className="text-4xl lg:text-5xl font-black text-[#1a1a1a] uppercase tracking-tight mb-8">
+                Ansh Mishra
+              </h3>
+              <div className="space-y-6 text-lg text-gray-700 font-medium leading-relaxed">
+                <p>
+                  Started during my first year of BTech, Zupsilon was born from a singular obsession: <span className="text-[#60507c]">how models reason across scale.</span>
+                </p>
+                <p>
+                  We are building a new class of intelligence that synthesizes the structural rigor of Graph Neural Networks with the semantic breadth of Large Language Models. Our goal is to create systems that don't just predict the next token, but understand the underlying manifold of relationships.
+                </p>
+                <div className="pt-8 flex flex-wrap gap-4">
+                  <div className="px-4 py-2 border-2 border-black text-xs font-bold uppercase tracking-widest">GNN Topologies</div>
+                  <div className="px-4 py-2 border-2 border-black text-xs font-bold uppercase tracking-widest">Language Models</div>
+                  <div className="px-4 py-2 border-2 border-black text-xs font-bold uppercase tracking-widest">Neural Geometry</div>
+                </div>
+
+                <div className="mt-12 p-6 border-l-4 border-dashed border-[#b19cd9] bg-[#fdf9fa]">
+                  <h4 className="text-sm font-black uppercase tracking-widest mb-2">Open Collaboration</h4>
+                  <p className="text-sm text-gray-500 italic mb-4">Interested in structural reasoning or Graph-LLM hybridization? We are open for researcher-led partnerships.</p>
+                  <a href="mailto:anshmishra@zupsilonai.me" className="text-xs font-black text-[#60507c] hover:underline uppercase tracking-tighter">Inquire for Collaboration →</a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* 4. WHAT YOU BUILD (PLATFORM) */}
@@ -441,26 +503,26 @@ export default function App() {
               {[
                 {
                   id: "RP-26-001",
-                  tag: "PREPRINT",
+                  tag: "WORKING PAPER",
                   title: "Graph-Native Reasoning at Scale: Beyond Message Passing",
-                  abstract: "New class of inference engines designed for multi-hop structural traversal.",
+                  abstract: "Internal draft detailing a new class of inference engines for multi-hop structural traversal.",
                   category: "Structural Inference",
                   year: "2026",
                 },
                 {
                   id: "RP-26-002",
-                  tag: "PREPRINT",
-                  title: "Relationship Intelligence: Rethinking Features in Graph-Structured Data",
-                  abstract: "Systematic study on encoding edge semantics as first-class signals in graph learning.",
-                  category: "Graph Learning",
+                  tag: "WORKING PAPER",
+                  title: "Relationship Intelligence: Combining GNN Topologies with Language Models",
+                  abstract: "Systematic study on using edge semantics as high-dimensional priors for linguistic reasoning.",
+                  category: "Hybrid AI",
                   year: "2026",
                 },
                 {
                   id: "RP-26-003",
-                  tag: "FORTHCOMING",
-                  title: "Nyaya-GNN: Applying Classical Indian Logic to Neural Architecture",
-                  abstract: "Bridging ancient logical frameworks with modern gradient-based structural optimization.",
-                  category: "AI Philosophy",
+                  tag: "IN DEVELOPMENT",
+                  title: "Nyaya-GNN: Classical Indian Logic as a Neural Framework",
+                  abstract: "Researching the application of early logical categorization systems to structural graph optimization.",
+                  category: "Neural Logic",
                   year: "2026",
                 },
               ].map((paper, i) => (
@@ -491,7 +553,7 @@ export default function App() {
                       {paper.category}
                     </span>
                     <div className="flex items-center gap-2 text-xs font-bold text-[#60507c] uppercase tracking-wider mt-auto group-hover:translate-x-2 transition-transform duration-300">
-                      Access Paper <ArrowUpRight className="w-3.5 h-3.5" />
+                      Internal Log <ArrowUpRight className="w-3.5 h-3.5" />
                     </div>
                   </div>
                 </motion.div>
@@ -570,12 +632,13 @@ export default function App() {
                 <a href="#platform" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Platform</a>
                 <a href="#research" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Research</a>
                 <a href="#philosophy" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Philosophy</a>
-                <a href="#lab" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Research Lab</a>
+                <a href="#about" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Founder</a>
+                <a href="#lab" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Research Index</a>
               </div>
               <div className="flex flex-col gap-4">
                 <span className="text-white font-bold mb-2 tracking-wider text-xs uppercase bg-[#60507c] px-2 py-1 w-fit">Connect</span>
                 <a href="#research" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">About Us</a>
-                <button onClick={() => setIsContactOpen(true)} className="text-left hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Contact</button>
+                <a href="mailto:anshmishra@zupsilonai.me" className="text-left hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Contact</a>
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#b19cd9] transition-colors font-bold uppercase tracking-wider">Instagram</a>
               </div>
             </div>

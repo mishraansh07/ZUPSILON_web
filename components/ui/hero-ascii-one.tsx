@@ -110,13 +110,13 @@ export default function AnimationPage() {
 
             <div className="relative mb-8">
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tighter uppercase text-white drop-shadow-2xl shader-text-gradient">
-                The world runs on relationships. <br className="hidden lg:block" />
-                <span className="text-white/40 font-bold">Most AI ignores that.</span>
+                Structural Reasoning. <br className="hidden lg:block" />
+                <span className="text-white/40 font-bold">Language Intelligence.</span>
               </h1>
             </div>
 
             <p className="text-lg lg:text-2xl text-white mb-10 leading-relaxed font-medium max-w-2xl text-balance bg-black/40 backdrop-blur-md p-4 border-l-4 border-[#b19cd9]">
-              Zupsilon builds Graph Neural Network systems that model how data actually connects — across people, systems, and networks.
+              Zupsilon builds Neural Systems that synthesize Graph Topologies with Language Model reasoning — modeling how data connect and communicate.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 items-center">
