@@ -79,17 +79,17 @@ export default function AnimationPage() {
 
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#0a0a0a]/20 via-[#0a0a0a]/60 to-[#0a0a0a]/90 pointer-events-none"></div>
 
-      {/* Premium Floating Header */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-7xl">
-        <div className="bg-black/40 backdrop-blur-2xl border border-white/10 px-6 py-4 flex items-center justify-between shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+      {/* Brutalist Sticky Header */}
+      <nav className="fixed top-0 left-0 right-0 z-[100] bg-white border-b-4 border-black">
+        <div className="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
           {/* Brand */}
-          <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="Logo" className="h-6 lg:h-8 w-auto brightness-200" />
-            <span className="text-white text-lg font-black tracking-widest uppercase">Zupsilon</span>
+          <div className="flex items-center gap-4">
+            <img src="/logo.png" alt="Logo" className="h-6 lg:h-8 w-auto grayscale brightness-0" />
+            <span className="text-black text-xl font-black tracking-widest uppercase">Zupsilon</span>
           </div>
 
           {/* Center Navigation */}
-          <div className="hidden lg:flex items-center gap-10">
+          <div className="hidden lg:flex items-center h-full">
             {[
               { name: 'Charter', id: 'charter' },
               { name: 'Laboratory', id: 'about' },
@@ -99,29 +99,29 @@ export default function AnimationPage() {
               <button
                 key={link.id}
                 onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
-                className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors duration-300 relative group"
+                className="h-full px-8 text-xs font-black uppercase tracking-[0.25em] text-black hover:bg-black hover:text-white transition-all duration-200 border-l-2 border-black last:border-r-2"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#b19cd9] transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </div>
 
-          {/* Status & Contact */}
-          <div className="flex items-center gap-6">
-            <div className="hidden md:flex items-center gap-2 px-3 py-1 border border-white/5 bg-white/5">
+          {/* Status Indicator */}
+          <div className="flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-3 px-4 py-2 border-2 border-black bg-[#60507c] text-white">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#b19cd9] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#b19cd9]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
               </span>
-              <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">Lab Online</span>
+              <span className="text-[10px] font-black uppercase tracking-widest">v1.0 ONLINE</span>
             </div>
-            <a 
-              href="mailto:anshmishra@zupsilonai.me"
-              className="px-4 py-2 bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-[#b19cd9] transition-colors duration-300"
-            >
-              Contact
-            </a>
+            
+            {/* Mobile Menu Icon (Placeholder) */}
+            <div className="lg:hidden w-8 h-8 flex flex-col justify-center gap-1.5">
+              <div className="w-full h-1 bg-black"></div>
+              <div className="w-full h-1 bg-black"></div>
+              <div className="w-full h-1 bg-black"></div>
+            </div>
           </div>
         </div>
       </nav>

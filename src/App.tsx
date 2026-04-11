@@ -97,7 +97,7 @@ export default function App() {
       </section>
 
       {/* 3a. THE NYAYA FRAMEWORK (CHARTER) */}
-      <section className="py-24 px-6 lg:px-20 max-w-7xl mx-auto relative overflow-hidden border-t-4 border-black/5">
+      <section id="charter" className="py-24 px-6 lg:px-20 max-w-7xl mx-auto relative overflow-hidden border-t-4 border-black/5">
         <motion.div
            initial="hidden"
            whileInView="visible"
@@ -281,7 +281,7 @@ export default function App() {
       </section>
 
       {/* 6. ETA-A BENCHMARK SHOWCASE */}
-      <section className="py-32 px-6 lg:px-20 bg-[#0e0e0e] border-y-4 border-[#60507c] relative overflow-hidden">
+      <section id="benchmarks" className="py-32 px-6 lg:px-20 bg-[#0e0e0e] border-y-4 border-[#60507c] relative overflow-hidden">
         <div className="absolute inset-0 shader-bg-dark opacity-30 pointer-events-none" />
         <div className="max-w-7xl mx-auto relative z-10">
 
@@ -486,7 +486,7 @@ export default function App() {
             </div>
           </motion.div>
 
-          {/* ── RESEARCH ARCHIVE (RELEASING SOON) ── */}
+          {/* ── RESEARCH ARCHIVE (CLEANUP) ── */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -499,71 +499,31 @@ export default function App() {
                 <BookOpen className="w-5 h-5 text-[#60507c]" />
                 <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-[#1a1a1a]">Technical Archive</h3>
               </div>
-              <p className="text-[10px] font-bold text-[#60507c] max-w-sm uppercase leading-relaxed tracking-wider bg-[#b19cd9]/10 px-3 py-1 border border-[#b19cd9]/20">
-                Notice: All current technical drafts are undergoing baseline reproduction. Releasing Q3 2026.
-              </p>
             </div>
 
-            <div className="border-t-2 border-[#1a1a1a]">
-              {[
-                {
-                  id: "LOG-26-001",
-                  tag: "RELEASING SOON",
-                  title: "Graph-Native Reasoning at Scale: Beyond Message Passing",
-                  abstract: "Internal draft detailing a new class of inference engines for multi-hop structural traversal.",
-                  category: "Structural Inference",
-                  year: "2026",
-                },
-                {
-                  id: "LOG-26-002",
-                  tag: "RELEASING SOON",
-                  title: "Relationship Intelligence: Combining GNN Topologies with Language Models",
-                  abstract: "Systematic study on using edge semantics as high-dimensional priors for linguistic reasoning.",
-                  category: "Hybrid AI",
-                  year: "2026",
-                },
-                {
-                  id: "LOG-26-003",
-                  tag: "RELEASING SOON",
-                  title: "Nyaya-GNN: Classical Indian Logic as a Neural Framework",
-                  abstract: "Researching the application of early logical categorization systems to structural graph optimization.",
-                  category: "Neural Logic",
-                  year: "2026",
-                },
-              ].map((paper, i) => (
-                <motion.div
-                  key={i}
-                  variants={smoothFade}
-                  className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start py-10 border-b-2 border-gray-100 px-4 hover:bg-[#60507c]/[0.02] transition-colors duration-400 cursor-default opacity-60 hover:opacity-100 transition-opacity"
-                >
-                  {/* Metadata Column */}
-                  <div className="md:col-span-2 flex flex-col gap-2">
-                     <span className="text-[10px] font-black tracking-widest text-[#60507c]">{paper.id}</span>
-                     <span className="text-xs font-bold text-gray-400">{paper.year} // {paper.tag}</span>
-                  </div>
-
-                  {/* Title & Abstract Column */}
-                  <div className="md:col-span-7">
-                    <h4 className="text-xl font-black tracking-tight text-[#1a1a1a] mb-3 group-hover:text-[#60507c] transition-colors duration-300 uppercase">
-                      {paper.title}
-                    </h4>
-                    <p className="text-sm text-gray-500 font-medium leading-relaxed max-w-2xl">
-                      {paper.abstract}
-                    </p>
-                  </div>
-
-                  {/* Category & Status Column */}
-                  <div className="md:col-span-3 flex flex-col md:items-end justify-between self-stretch">
-                    <span className="text-[10px] font-black tracking-[0.15em] uppercase bg-black text-white px-3 py-1 mb-4 md:mb-0">
-                      {paper.category}
-                    </span>
-                    <div className="flex items-center gap-2 text-xs font-bold text-[#60507c] uppercase tracking-wider mt-auto opacity-50">
-                      Locked <ArrowUpRight className="w-3.5 h-3.5" />
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+            <div className="border-4 border-[#1a1a1a] p-12 lg:p-20 bg-white relative overflow-hidden group">
+              <div className="absolute top-0 right-0 p-4">
+                 <Clock className="w-6 h-6 text-[#60507c] animate-pulse" />
+              </div>
+              <div className="relative z-10 max-w-2xl">
+                <h4 className="text-3xl lg:text-5xl font-black text-[#1a1a1a] uppercase leading-none mb-6">
+                  ACCESS <br className="hidden sm:block" />
+                  <span className="text-[#60507c]">RESTRICTED.</span>
+                </h4>
+                <p className="text-lg text-gray-400 font-bold uppercase tracking-tight leading-relaxed mb-8">
+                  Technical drafts and pre-prints are currently locked for empirical verification. Open-access reproduction logs are scheduled for release in Q3 2026.
+                </p>
+                <div className="flex flex-wrap gap-4 opacity-50 pointer-events-none grayscale">
+                   <span className="text-[10px] font-black tracking-widest border border-black px-2 py-1">LOGS LOCKED</span>
+                   <span className="text-[10px] font-black tracking-widest border border-black px-2 py-1">VERSION 0.9.4a</span>
+                </div>
+              </div>
+              {/* Background Decoration */}
+              <div className="absolute -bottom-10 -right-10 text-[12rem] font-black text-gray-50 select-none -z-10 group-hover:text-[#60507c]/5 transition-colors duration-700">
+                LAB
+              </div>
             </div>
+          </motion.div>
           </motion.div>
 
           {/* ── COMING SOON STRIP ── */}
