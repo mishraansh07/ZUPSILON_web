@@ -79,24 +79,52 @@ export default function AnimationPage() {
 
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#0a0a0a]/20 via-[#0a0a0a]/60 to-[#0a0a0a]/90 pointer-events-none"></div>
 
-      {/* Top Header */}
-      <div className="absolute top-0 left-0 right-0 z-20 border-b-4 border-white/10 bg-black/50 backdrop-blur-md">
-        <div className="container mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4 lg:gap-6">
-            <div className="flex items-center">
-               <img src="/logo.png" alt="Zupsilon Logo" className="h-8 lg:h-10 w-auto object-contain brightness-200 contrast-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]" />
-               <span className="text-white text-xl lg:text-2xl font-bold tracking-widest ml-3">ZUPSILON</span>
-            </div>
+      {/* Premium Floating Header */}
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-7xl">
+        <div className="bg-black/40 backdrop-blur-2xl border border-white/10 px-6 py-4 flex items-center justify-between shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          {/* Brand */}
+          <div className="flex items-center gap-3">
+            <img src="/logo.png" alt="Logo" className="h-6 lg:h-8 w-auto brightness-200" />
+            <span className="text-white text-lg font-black tracking-widest uppercase">Zupsilon</span>
           </div>
-          
-          <div className="hidden lg:flex items-center gap-6 text-xs font-bold text-white/50 tracking-wider z-50 relative">
-            <span className="flex items-center gap-2 border-2 border-white/10 px-3 py-1">
-              <span className="w-2 h-2 bg-[#b19cd9] opacity-80"></span>
-              LABORATORY v1.0 ONLINE
-            </span>
+
+          {/* Center Navigation */}
+          <div className="hidden lg:flex items-center gap-10">
+            {[
+              { name: 'Charter', id: 'charter' },
+              { name: 'Laboratory', id: 'about' },
+              { name: 'Benchmarks', id: 'benchmarks' },
+              { name: 'Archive', id: 'lab' },
+            ].map((link) => (
+              <button
+                key={link.id}
+                onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors duration-300 relative group"
+              >
+                {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#b19cd9] transition-all duration-300 group-hover:w-full"></span>
+              </button>
+            ))}
+          </div>
+
+          {/* Status & Contact */}
+          <div className="flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-2 px-3 py-1 border border-white/5 bg-white/5">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#b19cd9] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#b19cd9]"></span>
+              </span>
+              <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">Lab Online</span>
+            </div>
+            <a 
+              href="mailto:anshmishra@zupsilonai.me"
+              className="px-4 py-2 bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-[#b19cd9] transition-colors duration-300"
+            >
+              Contact
+            </a>
           </div>
         </div>
-      </div>
+      </nav>
 
       <div className="absolute top-24 left-6 lg:left-12 w-12 h-12 border-t-4 border-l-4 border-white/20 z-20 hidden lg:block"></div>
       <div className="absolute top-24 right-6 lg:right-12 w-12 h-12 border-t-4 border-r-4 border-white/20 z-20 hidden lg:block"></div>
